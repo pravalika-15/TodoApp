@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+const url = "https://todoapp-z5iy.onrender.com";
 function TaskEdit({ task, onSubmit, onTaskEdited }) {
   const [newTitle, setNewTitle] = useState(task.text);
 
@@ -12,13 +12,10 @@ function TaskEdit({ task, onSubmit, onTaskEdited }) {
     event.preventDefault();
     try {
       // Send a PUT request to the backend with the updated task data
-      const response = await axios.put(
-        `http://localhost:3001/api/todos/${task._id}`,
-        {
-          text: newTitle,
-          completed: task.completed,
-        }
-      );
+      const response = await axios.put(`${url}/api/todos/${task._id}`, {
+        text: newTitle,
+        completed: task.completed,
+      });
       console.log(response);
 
       // If the task is successfully updated on the backend, handle the response here

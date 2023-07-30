@@ -9,13 +9,15 @@ function TaskList() {
   useEffect(() => {
     fetchTasksFromBackend();
   }, []);
-   useEffect(() => {
-     console.log(tasks); // Log the tasks whenever it changes
-   }, [tasks]);
+  useEffect(() => {
+    console.log(tasks); // Log the tasks whenever it changes
+  }, [tasks]);
 
   const fetchTasksFromBackend = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/todos");
+      const response = await axios.get(
+        "https://todoapp-z5iy.onrender.com/api/todos"
+      );
       setTasks(response.data);
       setLoading(false);
       console.log(tasks);

@@ -3,7 +3,7 @@ import axios from "axios";
 import TaskEdit from "./TaskEdit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+const url = "https://todoapp-z5iy.onrender.com"
 function TaskShow({ task, onTaskDeleted, onTaskEdited }) {
   const [showEdit, setShowEdit] = useState(false);
   const [completed, setCompleted] = useState(task.completed);
@@ -14,7 +14,7 @@ function TaskShow({ task, onTaskDeleted, onTaskEdited }) {
     );
     if (confirmDeletion) {
       try {
-        await axios.delete(`http://localhost:3001/api/todos/${task._id}`);
+        await axios.delete(`${url}/api/todos/${task._id}`);
         console.log("deleted");
         onTaskDeleted(task._id);
       } catch (error) {
@@ -36,7 +36,7 @@ function TaskShow({ task, onTaskDeleted, onTaskEdited }) {
     setCompleted(isChecked);
     try {
       // Send a PUT request to the backend with the updated task data (including completion status)
-      await axios.put(`http://localhost:3001/api/todos/${task._id}`, {
+      await axios.put(`${url}/api/todos/${task._id}`, {
         text: task.text,
         completed: isChecked,
       });

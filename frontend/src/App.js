@@ -3,6 +3,7 @@ import CreateTask from "./components/CreateTask";
 import TaskShow from "./components/TaskShow";
 import "./styles.css";
 import axios from "axios";
+const url = "https://todoapp-z5iy.onrender.com";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ function App() {
 
   const fetchTasksFromBackend = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/todos"); // Replace with your backend URL
+      const response = await axios.get(`${url}/api/todos`); // Replace with your backend URL
       const tasksFromBackend = response.data;
       // Update TaskList.js with the fetched tasks
       // This will call the fetchtasks function with the data from the backend

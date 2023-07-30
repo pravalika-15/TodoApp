@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles.css";
 import axios from "axios";
-
+const url = "https://todoapp-z5iy.onrender.com"
 function CreateTask({ onTaskCreated }) {
   const [task, setTask] = useState("");
 
@@ -9,7 +9,7 @@ function CreateTask({ onTaskCreated }) {
     e.preventDefault();
     try {
       // Send a POST request to the backend with the task data
-      const response = await axios.post("http://localhost:3001/api/todos", {
+      const response = await axios.post(`${url}/api/todos`, {
         text: task,
         completed: false, // You can add more fields as needed by the backend
       });
